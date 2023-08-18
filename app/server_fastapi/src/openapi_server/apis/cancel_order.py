@@ -15,6 +15,7 @@ from fastapi import (  # noqa: F401
     status, HTTPException,
 )
 
+from apis.get_order import get_order
 from models.error import Error
 from sqlite.db_conn import connect_orders_db
 
@@ -35,16 +36,7 @@ async def cancel_order(
     orderId: str = Path(description=""),
 ) -> None:
     async with connect_orders_db() as db:
-        result = await db.execute(
-            f"""
-                SELECT * FROM orders
-                WHERE id = "{orderId}" 
-            """
-        )
-        result = await result.fetchall()
-        if not result:
-            raise HTTPException(status_code=404, detail="Order not found")
-
+        await get_order(orderId)
         await db.execute(
             f"""
                 DELETE FROM orders
