@@ -1,4 +1,6 @@
 # coding: utf-8
+import asyncio
+import random
 from typing import Dict, List  # noqa: F401
 
 from fastapi import (  # noqa: F401
@@ -36,6 +38,7 @@ router = APIRouter()
 async def get_order(
     orderId: str = Path(description=""),
 ) -> OrderOutput:
+    await asyncio.sleep(random.uniform(0.1, 1))
     async with connect_orders_db() as db:
         result = await db.execute(
             f"""

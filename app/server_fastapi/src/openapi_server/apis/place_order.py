@@ -1,4 +1,6 @@
 # coding: utf-8
+import asyncio
+import random
 import uuid
 from typing import Dict, List  # noqa: F401
 
@@ -39,6 +41,8 @@ router = APIRouter()
 async def place_order(
     order_input: OrderInput = Body(None, description="Order information"),
 ) -> OrderOutput:
+    await asyncio.sleep(random.uniform(0.1, 1))
+
     stoks = f'"{order_input.stoks}"' if order_input.stoks else 'Null'
     quantity = f'"{order_input.quantity}"' if order_input.quantity else 'Null'
     try:
