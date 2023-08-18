@@ -1,14 +1,10 @@
 import contextlib
+import logging
+import sys
 from sqlite3 import OperationalError
 
-import sys
 import aiosqlite
-import asyncio
-import logging
-
 from aiosqlite import Connection
-
-from models.order_input import OrderInput
 
 logger = logging.getLogger('sqlite')
 hdlr = logging.StreamHandler(sys.stdout)
@@ -33,23 +29,3 @@ async def connect_orders_db() -> Connection:
             logger.info(f'Fetched exception during table creation: {error}')
         db.row_factory = aiosqlite.Row
         yield db
-
-
-if __name__ == '__main__':
-    async def connect():
-        async with connect_orders_db() as db:
-            await db.execute(
-                """
-                INSERT INTO orders ('stoks', 'quantity')
-                VALUES ('EURRUB', 1.23)
-                """
-            )
-            await db.commit()
-            res = await db.execute(
-                """
-                SELECT * FROM orders
-                """
-            )
-            res = await res.fetchall()
-        print([dict(result) for result in res])
-    asyncio.run(connect())
