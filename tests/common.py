@@ -1,5 +1,5 @@
 
-BASE_URL = "http://0.0.0.0:8080"
+BASE_URL = "http://host.docker.internal:8080"
 
 
 class StatusCode:

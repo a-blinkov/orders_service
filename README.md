@@ -25,9 +25,9 @@ Automated tests wrote using pytest for parametrization and test run.
 1. Clone the repository: 
     
     ```git clone https://github.com/a-blinkov/trading_test_task.git```
-2. Go to the app folder:
+2. Go to the project folder:
     
-    ```cd /<project directory>/trading_test_task/app```
+    ```cd /<project directory>/trading_test_task/```
 3. Execute docker compose up command in detached mode:
      
     ```docker compose up -d```
@@ -43,7 +43,7 @@ install locust:
 
 To run test for order creation run following command in console:
 
-```locust -f <PATH_TO_THE_PROJECT>/trading_test_task/app/tests/Orders/locustfile.py --headless --users 100 --spawn 100 --host  http://0.0.0.0:8080 --run-time 5```
+```locust -f <PATH_TO_THE_PROJECT>/trading_test_task/tests/Orders/locustfile.py --headless --users 100 --spawn 100 --host  http://0.0.0.0:8080 --run-time 5```
 
 It will place 100 orders at second, during 5 seconds. After test finish you can see results at console.
 #### Not implemented:
