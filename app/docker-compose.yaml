@@ -1,0 +1,23 @@
+version: '3.6'
+services:
+  service:
+    privileged: true
+    user: root
+    image: service
+    container_name: service
+    build:
+      context: server_fastapi
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    command: uvicorn openapi_server.main:app --host 0.0.0.0 --port 8080
+
+  tests:
+    privileged: true
+    user: root
+    image: tests
+    container_name: tests
+    build:
+      context: tests
+      dockerfile: ./Dockerfile
+    command: python -m pytest --alluredir=allure_results Orders && allure serve allure_results

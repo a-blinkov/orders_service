@@ -43,8 +43,8 @@ async def place_order(
 ) -> OrderOutput:
     await asyncio.sleep(random.uniform(0.1, 1))
 
-    stoks = f'"{order_input.stoks}"' if order_input.stoks else 'Null'
-    quantity = f'"{order_input.quantity}"' if order_input.quantity else 'Null'
+    stoks = f'"{order_input.stoks}"' if order_input.stoks is not None else 'Null'
+    quantity = f'"{order_input.quantity}"' if order_input.quantity is not None else 'Null'
     try:
         order_id = str(uuid.uuid4())
         async with connect_orders_db() as db:
