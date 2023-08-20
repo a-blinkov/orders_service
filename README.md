@@ -36,9 +36,17 @@ Automated tests wrote using pytest for parametrization and test run.
 
    First with the service on ip 0.0.0.0:8080, second with the tests.
 
+### How to run perf test:
+install locust:
+
+```pip install locust```
+
+To run test for order creation run following command in console:
+
+```locust -f <PATH_TO_THE_PROJECT>/trading_test_task/app/tests/Orders/locustfile.py --headless --users 100 --spawn 100 --host  http://0.0.0.0:8080 --run-time 5```
+
+It will place 100 orders at second, during 5 seconds. After test finish you can see results at console.
 #### Not implemented:
 WebSocket functionality (would use [FastApi websocket](https://fastapi.tiangolo.com/advanced/websockets/))
    
 Allure report generated, but couldn't be accessable from container (would use Jenkins for running tests in container, as [in my demo-project](https://github.com/a-blinkov/demo-jenkins))
-
-Performance testing
