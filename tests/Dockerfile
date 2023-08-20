@@ -2,12 +2,14 @@
 FROM python:3.11
 
 # Installing of Python packages
-ADD ./* $HOME/code/
-WORKDIR /code/openapi_server
+COPY ./ $HOME/code/
+WORKDIR /code
 
-ENV PYTHONPATH=/code/src:/code
+ENV PYTHONPATH=/code
 ENV PYTHONUNBUFFERED=1
 ENV PATH /home/${USERNAME}/.local/bin:${PATH}
+ENV PATH="$PATH:/bin"
+
 
 RUN python -m pip install --upgrade pip
 RUN python3.11 -m venv /venv

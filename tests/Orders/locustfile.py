@@ -1,4 +1,4 @@
-from locust import HttpUser, task, LoadTestShape
+from locust import HttpUser, task
 
 from models.order_input import OrderInput
 
