@@ -1,4 +1,5 @@
 # trading_test_task
+It's a 3-day project.
 A RESTful API to simulate a Forex trading platform with WebSocket support for real-time order updates.
 
 ### Used tech:
