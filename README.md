@@ -1,7 +1,12 @@
 # orders_service
 It's a 3-days project.
 
+Repository contains:
 A RESTful API to simulate a "Forex trading" platform for real-time order updates.
+Automation tests for the APIs.
+Perf test as an example.
+Data stored in SqLite database.
+
 
 ### Used tech:
 Implemented async APIs for Orders read, creation, deletion using FastAPI. 
