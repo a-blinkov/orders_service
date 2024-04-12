@@ -1,7 +1,7 @@
-# trading_test_task
+# orders_service
 It's a 3-days project.
 
-A RESTful API to simulate a Forex trading platform with WebSocket support for real-time order updates.
+A RESTful API to simulate a "Forex trading" platform for real-time order updates.
 
 ### Used tech:
 Implemented async APIs for Orders read, creation, deletion using FastAPI. 
